@@ -10,3 +10,7 @@ Configured Tailwind Css
     -Sign Up Form
     - Form Validation
     -UseRef
+    -fireBase setup
+    -deploying our app to project
+    -Create SignUp USer account
+    
