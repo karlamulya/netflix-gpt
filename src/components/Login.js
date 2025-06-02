@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Header from './Header';
-import { BG_URL } from '../utils/Constants';
+import { BG_URL,USER_AVATAR } from '../utils/Constants';
 import checkValidData from '../utils/Validate';
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
@@ -32,19 +32,16 @@ const Login = () => {
         //Sign In Sign Up
 
         if(!isSignForm){
-            createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value)
+            createUserWithEmailAndPassword(auth, email?.current?.value, password?.current?.value,displayName?.current?.value)
             .then((userCredential) => {
               // Signed up 
-              const user = userCredential?.user;
+              const user = userCredential?.user;              
               if(user){
                 updateProfile(user, {
-                    displayName: displayName?.current?.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+                    displayName: displayName?.current?.value, photoURL: USER_AVATAR
                   }).then(() => {
                     const {uid, email, displayName} = auth.currentUser;
-                    console.log(auth.currentUser,'current user');
-                    
                     dispatch(addUser({uid: uid, email:email, displayName:displayName}))
-                    navigate('/browse');
                   }).catch((error) => {
                     seterrorMessage(error.errorMessage)
                   });
@@ -62,10 +59,7 @@ const Login = () => {
             .then((userCredential) => {
               // Signed in 
               const user = userCredential?.user;
-              if(user){
-                navigate('/browse')
-              }
-              // ...
+
             })
             .catch((error) => {
               const errorCode = error.code;
