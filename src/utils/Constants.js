@@ -16,3 +16,7 @@ export const BG_URL =
   export const POPULAR_PLAYING_API =  "https://api.themoviedb.org/3/movie/top_rated?page=1"
   export const MOVIES_VIDEO_API =  "https://api.themoviedb.org/3/movie/";
   export const TMDB_IMAGE = "https://image.tmdb.org/t/p/w500"
+  export const SUPPORTED_LANG = [
+    {identifier:'en',name:'English' },
+    {identifier:'hindi',name:'Hindi' }
+  ];
