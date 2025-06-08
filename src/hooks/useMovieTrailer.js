@@ -1,10 +1,12 @@
 import {MOVIES_VIDEO_API, API_OPTIONS} from '../utils/Constants'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { addTraileVideo } from '../utils/movieSlice';
 import { useEffect } from 'react';
 
 const useMovieTrailer = (movieId) =>{    
     const dispatch = useDispatch();
+    const traileVideo = useSelector((store)=> store.movies?.traileVideo)
+
     const getMovieVideos = async () => {
         const data = await fetch(MOVIES_VIDEO_API+movieId+"/videos?language=en-US", API_OPTIONS);
         const json = await data.json();
@@ -13,7 +15,7 @@ const useMovieTrailer = (movieId) =>{
         dispatch(addTraileVideo(finalTrailer))
 
     }
-    useEffect(()=>{getMovieVideos()}, [])
+    useEffect(()=>{!traileVideo && getMovieVideos()}, [])
 }
 
 export default useMovieTrailer;

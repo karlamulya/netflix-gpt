@@ -8,15 +8,17 @@ export const BG_URL =
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjkyMTA4Y2NmN2Y4NTI3MTg1NDE5ZDI5YjY1OTZmNCIsIm5iZiI6MTc0ODcyNjMzMS4xMjYwMDAyLCJzdWIiOiI2ODNiNzIzYjE0NTMxZGM4MzgyODg3NTEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.IP03Z9Q0Yo6gVY7pwMkVqkpsgEFQ3RRbKaUG84pDyYk'
+      Authorization: 'Bearer' + process.env.REACT_APP_TMBD_AUTH_KEY
     }
   };
 
   export const NOW_PLAYING_API = "https://api.themoviedb.org/3/movie/now_playing?page=1";
   export const POPULAR_PLAYING_API =  "https://api.themoviedb.org/3/movie/top_rated?page=1"
   export const MOVIES_VIDEO_API =  "https://api.themoviedb.org/3/movie/";
-  export const TMDB_IMAGE = "https://image.tmdb.org/t/p/w500"
+  export const TMDB_IMAGE = "https://image.tmdb.org/t/p/w500";
+  export const SEARCH_MOVIE = "https://api.themoviedb.org/3/search/movie?query="
   export const SUPPORTED_LANG = [
     {identifier:'en',name:'English' },
     {identifier:'hindi',name:'Hindi' }
   ];
+  export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
